@@ -4,9 +4,17 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity" >
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/vp_main"
+    <com.itheima.gooleplay74.view.PagerTab
+        android:id="@+id/pager_tab"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="42dp"
+        android:background="@drawable/bg_tab" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/hello_world" 
+        />
 
 </RelativeLayout>

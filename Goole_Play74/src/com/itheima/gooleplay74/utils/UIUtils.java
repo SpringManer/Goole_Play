@@ -72,7 +72,7 @@ public class UIUtils {
 	// dp = px/像素密度
 
 	// px --> dp
-	public static float px2dp(int px) {
+	public static float px2dip(int px) {
 
 		float density = getContext().getResources().getDisplayMetrics().density;
 
