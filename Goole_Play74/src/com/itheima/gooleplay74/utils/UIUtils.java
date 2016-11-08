@@ -6,7 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.view.View;
 
-import com.itheima.gooleplay74.globe.GoolePlayApplicaton;
+import com.itheima.gooleplay74.globe.GooglePlayApplication;
 
 /**
  * 常用UI工具类
@@ -18,16 +18,16 @@ public class UIUtils {
 
 	public static Context getContext() {
 
-		return GoolePlayApplicaton.Context;
+		return GooglePlayApplication.getContext();
 
 	}
 
 	public static int getMainThredId() {
-		return GoolePlayApplicaton.mainThredId;
+		return GooglePlayApplication.mainThreadId;
 	}
 
 	public static Handler getHandler() {
-		return GoolePlayApplicaton.getHandler();
+		return GooglePlayApplication.getHandler();
 	}
 
 	// ////////////////加载资源文件////////////////////

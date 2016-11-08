@@ -2,15 +2,12 @@ package com.itheima.gooleplay74.fragment;
 
 import java.util.HashMap;
 
-import android.support.v4.app.Fragment;
-
 public class FragementFactory {
 
-	private static HashMap<Integer, BaseFragment> mFragmentMap;
+	static HashMap<Integer, BaseFragment> mFragmentMap = new HashMap<Integer, BaseFragment>();
 
-	public static Fragment createFragment(int pos) {
+	public static BaseFragment createFragment(int pos) {
 
-		mFragmentMap = new HashMap<Integer, BaseFragment>();
 		BaseFragment fragment = mFragmentMap.get(pos);
 
 		if (fragment == null) {
