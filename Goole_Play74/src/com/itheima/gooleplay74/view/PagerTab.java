@@ -22,9 +22,9 @@ import android.view.ViewTreeObserver;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.itheima.gooleplay74.R;
 import com.itheima.gooleplay74.activity.BaseActivity;
 import com.itheima.gooleplay74.utils.UIUtils;
-import com.itheima.gooleplay74676.R;
 /**
  * 1. 创建BaseActivity继承ActionbarActivity(导入v7包)
  * 2. 创建状态选择器bg_tab_text和tab_text_color
