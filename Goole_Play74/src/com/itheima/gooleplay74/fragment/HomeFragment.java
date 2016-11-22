@@ -2,27 +2,28 @@ package com.itheima.gooleplay74.fragment;
 
 import java.util.ArrayList;
 
-import android.os.SystemClock;
 import android.view.View;
-import android.widget.ListView;
 
 import com.itheima.gooleplay74.adapter.MyBaseAdapter;
+import com.itheima.gooleplay74.domain.AppInfo;
 import com.itheima.gooleplay74.holder.BaseHolder;
 import com.itheima.gooleplay74.holder.HomeHolder;
+import com.itheima.gooleplay74.http.protocol.HomeProtocal;
 import com.itheima.gooleplay74.utils.UIUtils;
 import com.itheima.gooleplay74.view.LoadingPage.ResultState;
+import com.itheima.gooleplay74.view.MyListView;
 
 public class HomeFragment<E> extends BaseFragment {
 
-	private ArrayList<String> arrayList;
-	private ArrayList<String> mMoreData;
+	private HomeProtocal homeProtocal;
+	ArrayList<AppInfo> data;
 
 	@Override
 	public View onCreateSuccessView() {
 
-		ListView listView = new ListView(UIUtils.getContext());
+		MyListView listView = new MyListView(UIUtils.getContext());
 
-		listView.setAdapter(new SimpleTestAdaptor(arrayList));
+		listView.setAdapter(new SimpleTestAdaptor(data));
 
 		return listView;
 	}
@@ -30,19 +31,29 @@ public class HomeFragment<E> extends BaseFragment {
 	@Override
 	public ResultState onLoad() {
 
-		arrayList = new ArrayList<String>();
+		homeProtocal = new HomeProtocal();
 
-		mMoreData = new ArrayList<String>();
+		data = (ArrayList<AppInfo>) homeProtocal.getData(0);
+		if (data == null) {
+			return ResultState.STATE_EMPTY;
 
-		for (int i = 0; i < 30; i++) {
-
-			arrayList.add("测试数据" + i);
-
-			mMoreData.add("更多测试数据" + i);
-
+		} else {
+			return ResultState.STATE_SUCCESS;
 		}
 
-		return ResultState.STATE_SUCCESS;
+		// arrayList = new ArrayList<String>();
+		//
+		// mMoreData = new ArrayList<String>();
+		//
+		// for (int i = 0; i < 30; i++) {
+		//
+		// arrayList.add("测试数据" + i);
+		//
+		// mMoreData.add("更多测试数据" + i);
+		//
+		// }
+		//
+		// return ResultState.STATE_SUCCESS;
 
 	}
 
@@ -60,29 +71,14 @@ public class HomeFragment<E> extends BaseFragment {
 
 		@Override
 		public boolean isHaveMore() {
-			return true;
+			return false;
 		}
 
 		@Override
 		public ArrayList onLoadMore() {
-			
-			
-			
+			ArrayList mMoredata = (ArrayList) homeProtocal.getData(data.size());
 
-
-				mMoreData = new ArrayList<String>();
-
-				for (int i = 0; i < 15; i++) {
-
-
-					mMoreData.add("更多测试数据" + i);
-
-				}
-				
-				SystemClock.sleep(2000);
-
-
-			return mMoreData;
+			return mMoredata;
 		}
 
 	}
