@@ -1,5 +1,7 @@
 package com.itheima.gooleplay74.fragment;
 
+import java.util.ArrayList;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,7 +11,6 @@ import android.view.ViewGroup;
 import com.itheima.gooleplay74.utils.UIUtils;
 import com.itheima.gooleplay74.view.LoadingPage;
 import com.itheima.gooleplay74.view.LoadingPage.ResultState;
-
 
 public abstract class BaseFragment extends Fragment {
 
@@ -23,13 +24,10 @@ public abstract class BaseFragment extends Fragment {
 		// view.setText(getClass().getSimpleName());
 		mLoadingPage = new LoadingPage(UIUtils.getContext()) {
 
-		
-
 			@Override
 			public ResultState onLoad() {
 				return BaseFragment.this.onLoad();
 			}
-
 
 			@Override
 			public View onCreateSuccessView() {
@@ -41,6 +39,35 @@ public abstract class BaseFragment extends Fragment {
 		return mLoadingPage;
 	}
 
+	/**
+	 * 检查数据
+	 * 
+	 * @param obj
+	 * @return
+	 */
+	public ResultState checkData(Object obj) {
+
+		if (obj != null) {
+
+			if (obj instanceof ArrayList) {
+
+				ArrayList data = (ArrayList) obj;
+
+				if (!data.isEmpty()) {
+					return ResultState.STATE_SUCCESS;
+
+				} else {
+					return ResultState.STATE_EMPTY;
+				}
+
+			}
+
+		}
+
+		return ResultState.STATE_ERROR;
+
+	}
+
 	// 加载成功的布局, 必须由子类来实现
 	public abstract View onCreateSuccessView();
 
@@ -49,9 +76,9 @@ public abstract class BaseFragment extends Fragment {
 
 	// 开始加载数据
 	public void loadData() {
-//		if (mLoadingPage != null) {
-			mLoadingPage.loadData();
-//		}
+		// if (mLoadingPage != null) {
+		mLoadingPage.loadData();
+		// }
 	}
 
 }

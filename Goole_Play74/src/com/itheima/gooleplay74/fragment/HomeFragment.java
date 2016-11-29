@@ -23,7 +23,7 @@ public class HomeFragment<E> extends BaseFragment {
 
 		MyListView listView = new MyListView(UIUtils.getContext());
 
-		listView.setAdapter(new SimpleTestAdaptor(data));
+		listView.setAdapter(new HomeAdaptor(data));
 
 		return listView;
 	}
@@ -33,13 +33,16 @@ public class HomeFragment<E> extends BaseFragment {
 
 		homeProtocal = new HomeProtocal();
 
-		data = (ArrayList<AppInfo>) homeProtocal.getData(0);
-		if (data == null) {
-			return ResultState.STATE_EMPTY;
+		data = homeProtocal.getData(0);
 
-		} else {
-			return ResultState.STATE_SUCCESS;
-		}
+		return checkData(data);
+
+		// if (data == null) {
+		// return ResultState.STATE_EMPTY;
+		//
+		// } else {
+		// return ResultState.STATE_SUCCESS;
+		// }
 
 		// arrayList = new ArrayList<String>();
 		//
@@ -57,9 +60,9 @@ public class HomeFragment<E> extends BaseFragment {
 
 	}
 
-	private class SimpleTestAdaptor extends MyBaseAdapter {
+	private class HomeAdaptor extends MyBaseAdapter<AppInfo> {
 
-		SimpleTestAdaptor(ArrayList arrayList) {
+		HomeAdaptor(ArrayList arrayList) {
 			super(arrayList);
 		}
 

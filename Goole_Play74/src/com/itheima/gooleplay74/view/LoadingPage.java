@@ -13,6 +13,7 @@ package com.itheima.gooleplay74.view;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 
 import com.itheima.gooleplay74.R;
@@ -58,6 +59,19 @@ public abstract class LoadingPage extends FrameLayout {
 		// 初始化加载失败布局
 		if (mErrorPage == null) {
 			mErrorPage = UIUtils.inflate(R.layout.page_error);
+
+			Button mBtn_error = (Button) mErrorPage
+					.findViewById(R.id.btn_error);
+
+			mBtn_error.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					// 重新加载
+					loadData();
+				}
+			});
+
 			addView(mErrorPage);
 		}
 

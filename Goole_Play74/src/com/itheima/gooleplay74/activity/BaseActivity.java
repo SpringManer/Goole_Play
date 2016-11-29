@@ -10,5 +10,12 @@ public class BaseActivity extends ActionBarActivity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 	}
+	
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		
+		
+		super.onSaveInstanceState(outState);
+	}
 
 }
