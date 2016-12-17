@@ -67,7 +67,7 @@ public class HomeFragment<E> extends BaseFragment {
 		}
 
 		@Override
-		public BaseHolder getHolder() {
+		public BaseHolder getHolder(int position) {
 
 			return new HomeHolder();
 		}
